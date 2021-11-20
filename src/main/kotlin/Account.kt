@@ -1,16 +1,16 @@
-class Account(
+abstract class Account(
     var titular: String,
     val number: Int
 ) {
     var saldo: Double = 0.toDouble()
-        private set
+        protected set
 
 
     fun deposita(value: Double) {
         this.saldo += value
     }
 
-    fun sacar(value: Double) {
+    open fun sacar(value: Double) {
         if (this.saldo >= value) {
             this.saldo -= value
         }

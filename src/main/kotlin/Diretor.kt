@@ -2,17 +2,19 @@ class Diretor(
     name: String,
     cpf: String,
     salario: Double,
-    val password: Int): Funcionario(
+    password: Int,
+    val plr: Double
+) : FuncionarioAdmin(
     name = name,
     cpf = cpf,
     salario = salario,
-    ) {
+    password = password
+) {
 
-    fun autentica(password: Int): Boolean {
-        if (password == this.password) {
-            return true
+
+
+    override val bonificacao: Double
+        get() {
+            return this.salario + this.plr
         }
-        return false
-
-    }
 }
