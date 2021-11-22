@@ -1,6 +1,6 @@
 fun numbers() {
     println("---------><--------")
-    val contaBruno = Account("Bruno", 2001)
+    val contaBruno = ContaCorrente("Bruno", 2001)
     println(contaBruno.titular)
 
 
@@ -12,7 +12,7 @@ fun numbers() {
 
     println("-------><------")
 
-    val contaJoao = Account("João", 2002)
+    val contaJoao = ContaPoupanca("João", 2002)
 
     var contaMaria = contaJoao
     contaMaria.titular = "Maria"

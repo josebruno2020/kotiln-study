@@ -1,15 +1,17 @@
+import interfaces.Autenticavel
+
 class Diretor(
     name: String,
     cpf: String,
     salario: Double,
-    password: Int,
+    val senha: Int,
     val plr: Double
 ) : FuncionarioAdmin(
     name = name,
     cpf = cpf,
     salario = salario,
-    password = password
-) {
+    password = senha
+), Autenticavel {
 
 
 

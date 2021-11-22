@@ -1,7 +1,9 @@
+import interfaces.Autenticavel
+
 class SistemaInterno {
-    fun entra(admin: FuncionarioAdmin, senha: Int) {
-        if(admin.autentica(password = senha)) {
-            return println("Bem-vindo ao Bytebank!")
+    fun entra(auth: Autenticavel, senha: Int, nome: String) {
+        if(auth.autentica(senha = senha)) {
+            return println("Bem-vindo ao Bytebank! $nome")
         }
         return println("Falha na autenticação")
     }

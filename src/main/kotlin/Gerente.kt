@@ -1,15 +1,17 @@
+import interfaces.Autenticavel
+
 class Gerente(
     name: String,
     cpf: String,
     salario: Double,
-    password: Int
+    val senha: Int
 ) : FuncionarioAdmin(
     name = name,
     cpf = cpf,
     salario = salario,
-    password = password
+    password = senha
 
-) {
+), Autenticavel {
     override val bonificacao: Double
         get() {
             return this.salario
