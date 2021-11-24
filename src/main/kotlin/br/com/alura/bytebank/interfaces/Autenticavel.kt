@@ -1,4 +1,4 @@
-package interfaces
+package br.com.alura.bytebank.interfaces
 
 interface Autenticavel {
 

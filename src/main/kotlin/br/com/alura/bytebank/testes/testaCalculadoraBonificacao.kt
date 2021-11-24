@@ -1,6 +1,11 @@
-//IDENTAR: ctrl alt l
-//INSERIR NOVO ARQUIVO: alt insert
-fun main() {
+package br.com.alura.bytebank.testes
+
+import br.com.alura.bytebank.modelo.CalculadoraBonificacao
+import br.com.alura.bytebank.modelo.Cliente
+import br.com.alura.bytebank.modelo.Gerente
+import br.com.alura.bytebank.modelo.SistemaInterno
+
+fun testaCalculadoraBonificacao() {
     val alex = Gerente(
         name = "Alex",
         cpf = "11824133901",
@@ -19,4 +24,3 @@ fun main() {
 
     println("Total de bonificacao: ${calculadoraBonificacao.total}")
 }
-

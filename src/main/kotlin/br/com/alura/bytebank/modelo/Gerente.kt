@@ -1,4 +1,6 @@
-import interfaces.Autenticavel
+package br.com.alura.bytebank.modelo
+
+import br.com.alura.bytebank.interfaces.Autenticavel
 
 class Gerente(
     name: String,
