@@ -1,30 +1,23 @@
-import br.com.alura.bytebank.interfaces.Autenticavel
-import br.com.alura.bytebank.modelo.*
+import br.com.alura.bytebank.modelo.Endereco
 
 //IDENTAR: ctrl alt l
 //INSERIR NOVO ARQUIVO: alt insert
 //IMPORTS ctrl alt o
 
 fun main() {
+    val endereco = Endereco(logradouro = "Logradouro", cep = "000")
+    val enderecoNovo = Endereco(cep = "000")
+    println(endereco.equals(enderecoNovo))
 
-    //Objeto anonimo pode implementar uma interface;
-    val fran = object : Autenticavel {
-        val nome: String = "Fran"
-        val cpf: String = "123123123"
-        var senha: Int = 123
-
-        override fun autentica(senha: Int): Boolean {
-            return this.senha == senha
-        }
-    }
-
-
-
-
-    testaComportamentosConta()
-
-    println("Total de contas: ${Account.Contador.total}")
+    println(endereco.hashCode())
+    println(enderecoNovo.hashCode())
+    println(endereco.toString())
 }
+
+fun imprime(valor: Any) {
+
+}
+
 
 
 

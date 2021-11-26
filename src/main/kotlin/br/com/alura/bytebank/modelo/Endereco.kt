@@ -10,4 +10,29 @@ class Endereco(
     var complemento: String = "",
 ) {
 
+    override fun toString(): String {
+        return """Endereco(
+            |logradouro='$logradouro', 
+            |numero=$numero, 
+            |bairro='$bairro', 
+            |cidade='$cidade', 
+            |estado='$estado', cep='$cep', complemento='$complemento')""".trimMargin().trimIndent()
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Endereco
+
+        if (cep != other.cep) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return cep.hashCode()
+    }
+
+
 }
