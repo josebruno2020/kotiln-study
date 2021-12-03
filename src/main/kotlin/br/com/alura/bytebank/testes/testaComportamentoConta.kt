@@ -1,7 +1,6 @@
-import br.com.alura.bytebank.modelo.Cliente
-import br.com.alura.bytebank.modelo.ContaCorrente
-import br.com.alura.bytebank.modelo.ContaPoupanca
-import br.com.alura.bytebank.modelo.Endereco
+import br.com.alura.bytebank.exceptions.FalhaAutenticacaoException
+import br.com.alura.bytebank.exceptions.SaldoInsuficienteException
+import br.com.alura.bytebank.modelo.*
 
 fun testaComportamentosConta() {
     println("Welcome to Bytebank!")
@@ -17,10 +16,19 @@ fun testaComportamentosConta() {
     println("-------------<>---------------")
     val clienteMaria = Cliente(name = "Maria", cpf = "", senha = 123123)
     val contaMaria = ContaPoupanca(titular = clienteMaria, number = 1000)
-    if (contaJose.transfer(value = 100.0, accountDestiny = contaMaria)) {
+    try {
+        contaJose.transfer(value = 5000.0, accountDestiny = contaMaria, 1)
         println("Transferência sucedida")
-    } else {
+    } catch (e: SaldoInsuficienteException) {
+        println(e.message)
         println("Falha na transferência")
+        e.printStackTrace()
+    } catch (e: FalhaAutenticacaoException) {
+        println(e.message)
+        e.printStackTrace()
+    } catch (e: Exception) {
+        println("Erro desconhecido: ${e.message}")
+        e.printStackTrace()
     }
 
     println("CONTA JOSE ${contaJose.saldo}")

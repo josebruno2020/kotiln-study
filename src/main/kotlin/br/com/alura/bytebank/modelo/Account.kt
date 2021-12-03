@@ -1,13 +1,17 @@
 package br.com.alura.bytebank.modelo
 
+import br.com.alura.bytebank.exceptions.FalhaAutenticacaoException
+import br.com.alura.bytebank.exceptions.SaldoInsuficienteException
+import br.com.alura.bytebank.interfaces.Autenticavel
+
 //Variavel global (como o set esta privado, apenas o arquivo que ela foi instanciado que pode alterá-la);
 var totalContas: Int = 0
     private set
 
 abstract class Account(
-    var titular: Cliente,
+    val titular: Cliente,
     val number: Int
-) {
+): Autenticavel by titular {
     var saldo: Double = 0.toDouble()
         protected set
 
@@ -33,12 +37,22 @@ abstract class Account(
         }
     }
 
-    fun transfer(value: Double, accountDestiny: Account): Boolean {
-        if (this.saldo >= value) {
-            this.saldo -= value
-            accountDestiny.deposita(value)
-            return true
+    fun transfer(value: Double, accountDestiny: Account, password: Int) {
+        if(this.saldo < value) {
+            throw SaldoInsuficienteException("Saldo atual: ${this.saldo}. Saldo solicitado: $value")
         }
-        return false
+
+        if(!autentica(password)) {
+            throw FalhaAutenticacaoException()
+        }
+
+        this.saldo -= value
+        accountDestiny.deposita(value)
     }
+
+    //Delegation
+//    override fun autentica(senha: Int): Boolean {
+//        return this.titular.autentica(senha)
+//    }
 }
+
